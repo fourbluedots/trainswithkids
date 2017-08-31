@@ -2,23 +2,14 @@
   <v-app light>
     <v-navigation-drawer temporary v-model="sideNav">
       <v-list>
-        <v-list-tile>
+        <v-list-tile v-for="item in menuItems" :key="item.title">
           <v-list-tile-action>
-            <v-icon left>train</v-icon>
+            <v-icon left>{{item.icon}}</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            See Trains
+            {{item.title}}
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile>
-          <v-list-tile-action>
-            <v-icon left>event</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            Events
-          </v-list-tile-content>
-        </v-list-tile>
-
       </v-list>
     </v-navigation-drawer>
 
@@ -27,17 +18,15 @@
       <v-toolbar-title>Trains With Kids</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-xs-only" >
-        <v-btn flat>
-           <v-icon left>train</v-icon>
-          See Trains
-          </v-btn>
-        <v-btn flat>
-          <v-icon left>event</v-icon>
-          Events
+        <v-btn flat v-for="item in menuItems" :key="item.title">
+           <v-icon left>{{item.icon}}</v-icon>
+          {{item.title}}
           </v-btn>
       </v-toolbar-items>
     </v-toolbar>
-    <main></main>
+    <main>
+      <router-view></router-view>
+    </main>
   </v-app>
 </template>
 
@@ -46,6 +35,13 @@
     data() {
       return {
         sideNav: false,
+        menuItems: [
+          { icon: 'train', title: 'See Trains' },
+          { icon: 'event', title: 'Events' },
+          { icon: 'person', title: 'Profile' },
+          { icon: 'face', title: 'Sign up' },
+          { icon: 'lock_open', title: 'Sign in' },
+        ],
       };
     },
   };

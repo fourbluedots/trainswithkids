@@ -7,6 +7,7 @@ import Trains from '@/components/trains/Trains';
 import Profile from '@/components/user/Profile';
 import Signin from '@/components/user/Signin';
 import Signup from '@/components/user/Signup';
+import Event from '@/components/events/Event';
 
 Vue.use(Router);
 
@@ -22,6 +23,11 @@ export default new Router({
       path: '/events',
       name: 'Events',
       component: Events,
+    },
+    {
+      path: '/events/:id',
+      name: 'Event',
+      component: Event,
     },
     {
       path: '/events/new',
